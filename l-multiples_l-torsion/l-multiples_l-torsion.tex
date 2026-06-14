@@ -1,0 +1,148 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[all]{xy}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage[a4paper, top=3cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
+
+\DeclareMathOperator{\alg}{alg}
+\DeclareMathOperator{\obj}{Obj}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\fib}{Fib}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\proj}{Proj}
+\DeclareMathOperator{\trdeg}{trdeg}
+\DeclareMathOperator{\car}{char}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\reduced}{red}
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\den}{den}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Br}{Br}
+\DeclareMathOperator{\inv}{inv}
+\DeclareMathOperator{\Nm}{Nm}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\an}{an}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\sep}{sep}
+\DeclareMathOperator{\unr}{unr}
+\DeclareMathOperator{\et}{\acute et}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\gl}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\mat}{Mat}
+\DeclareMathOperator{\ab}{ab}
+
+\newcommand{\grp}{\textsc{Grp}}
+\newcommand{\set}{\textsc{Set}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\naturalto}{\overset{.}{\to}}
+\newcommand{\qbar}{\overline{\mathbb{Q}}}
+\newcommand{\zbar}{\overline{\mathbb{Z}}}
+
+\newcommand{\pro}{\mathbb{P}}
+\newcommand{\aff}{\mathbb{A}}
+\newcommand{\quat}{\mathbb{H}}
+\newcommand{\rea}{\mathbb{R}}
+\newcommand{\kiu}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\zee}{\mathbb{Z}}
+\newcommand{\ow}{\mathcal{O}}
+\newcommand{\mcx}{\mathcal{X}}
+\newcommand{\mcy}{\mathcal{Y}}
+\newcommand{\mcs}{\mathcal{S}}
+\newcommand{\mca}{\mathcal{A}}
+\newcommand{\mcb}{\mathcal{B}}
+\newcommand{\mcf}{\mathcal{F}}
+\newcommand{\mcg}{\mathcal{G}}
+\newcommand{\mct}{\mathcal{T}}
+\newcommand{\mcq}{\mathcal{Q}}
+\newcommand{\mcr}{\mathcal{R}}
+\newcommand{\adl}{\mathbf{A}}
+\newcommand{\mbk}{\mathbf{k}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+
+\newcommand{\kbar}{\overline{K}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{corollary}[lemma]{Corollary}
+\theoremstyle{definition}
+\newtheorem{remark}[lemma]{Remark}
+
+\title{Rational $\ell$-multiples of points over the $\ell$-torsion field}
+\author{Sebastiano Tronto}
+
+\begin{document}
+
+\maketitle
+
+Let $\ell$ be a rational prime and let $A$ be an abelian variety of dimension $d$ over a number field $K$. Let $K_\ell=K(A[\ell])$ and let $\mathcal{T}_1=\gal(K_\ell\,|\,K)$.
+
+\begin{remark}
+For $m\geq 1$ we have $\#\gl_m(\F_\ell)=\prod_{i=0}^{\ell-1}(\ell^m-\ell^i)$. In fact, elements of $\gl_m(\F_\ell)$ are in bijection with bases of $\F^m_\ell$, and counting basis of a vector space over a finite field is a simple combinatorics exercise: first we pick any non-zero vector ($\ell^n-1$ possibilities), then we pick any vector that is not in the $\F_\ell$-span on the first one ($\ell^n-\ell$ possibilities), then a third one that is not in the span of the first two...
+
+In particular, $v_\ell\left(\#\gl_m(\F_\ell)\right)=\frac{1}{2}m(m-1)$.
+\end{remark}
+
+Compare the next lemma with \cite{jr}, Lemma 3.7.
+
+\begin{lemma}
+There is an exact sequence
+\begin{align*}
+0\to \ell A(K) \to A(K)\cap \ell A(K_{\ell})\to H^1(\mathcal{T}_1,A[\ell]).
+\end{align*}
+In particular, if $H^1(\mathcal{T}_1,A[\ell])=0$ we have $A(K)\cap \ell A(K_\ell)=\ell A(K)$.
+\begin{proof}
+Consider the short exact sequence of $\mathcal{T}_1$-modules
+\begin{align*}
+0\to A[\ell](K_{\ell})\to A(K_{\ell})\to \ell A(K_{\ell})\to 0
+\end{align*}
+and the induced long exact sequence in cohomology (i.e. take $H^*(\mathcal{T}_1,-)$)
+\begin{align*}
+0\to A[\ell](K)\to A(K)\to A(K)\cap\ell A(K_{\ell})\to H^1(\mathcal{T}_1,A[\ell])\to\cdots
+\end{align*}
+and the thesis follows by noticing that $A(K)/A[\ell](K)\cong \ell A(K)$.
+\end{proof}
+\end{lemma}
+
+This leads us to study the group $H^1(\mathcal{T}_1,A[\ell])$. In particular, we would like to know in which cases it is trivial (and so we are happy). In particular, the case of elliptic curves has been completely solved if $K=\kiu$, and there are rather complete results if $K\cap \kiu(\zeta_\ell)=\kiu$ (see \cite{lawson}).
+
+It is in fact possible that some point $\alpha\in A(K)$ is not $\ell$-divisible in $A(K)$, but becomes $\ell$-divisible in $A(K_\ell)$. The smallest example I have found is the point 
+$(23769/400, 3529853/8000)$ on the elliptic curve over $\kiu$ with Cremona Label $17739g1$. A gp script that finds all the 12 examples of elliptic curves with conductor $<10^5$ with a generator of the free part of the group of rational points that becomes $3$-divisible over $K_3$ can be found in \texttt{test3.gp}.
+\\
+
+The question now becomes: ``How much'' can a point $\alpha\in A(K)$ become $\ell$-divisible in $A(K_{\ell^\infty})$? That is, can we find an (explicit) $N$ such that there is no $\beta\in A(K_{\ell^\infty})$ with $\alpha=\ell^n\beta$ for $n\geq N$?
+
+%\textbf{We restrict to the case where $A=E$ is an elliptic curve without complex multiplication}. Following the proof of Theorem 5.2 of \cite{jr} (using Lemma 3.6 of the same article), we see that $A(K)\cap \ell A(K_{\ell^n})=A(K)\cap \ell A(K_{\ell^{n-1}})$ for any $n\geq n_0$, where $n_0$ is such that $A$ satisfies maximal growth of the torsion part starting from $n_0$. So we can replace $K_{\ell^{\infty}}$ with the finite extension $K_{\ell^{n_0}}$.
+
+%Second question: work in progress! (Latest idea: use heights and the fact that that $P$ does not become ``more divisible'' by $\ell$ after a certain point; see descent part in the proof of Mordell-Weil).
+
+(If we could say $A(K)\cap\ell A(K_{\ell^\infty})=A(K)\cap\ell A(K_{\ell^{n_0}})$ for some $n_0$, then we could use Petsche's results to explicitly bound $N$ in terms of the height of $P$)
+
+\begin{thebibliography}{[99]}
+\bibitem{jr} R. Jones, J. Rouse, \emph{Galois Theory of Iterated Endomorphisms}, preprint(?).
+%\bibitem{lom} D. Lombardo, A. Perucca, \emph{Reductions of Points on Algebraic Groups}, preprint.
+%\bibitem{milne-ft} J. S. Milne, \emph{Fields and Galois Theory}, Online notes.
+\bibitem{lawson} T. Lawson, C. Wuthrich, \emph{Vanishing of some Galois cohomology groups for elliptic curves}, preprint(?).
+\end{thebibliography} 
+
+\end{document}

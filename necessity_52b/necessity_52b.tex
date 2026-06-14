@@ -1,0 +1,96 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[a4paper, top=3cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
+
+\DeclareMathOperator{\alg}{alg}
+\DeclareMathOperator{\obj}{Obj}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\gal}{Gal}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\fib}{Fib}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\proj}{Proj}
+\DeclareMathOperator{\trdeg}{trdeg}
+\DeclareMathOperator{\car}{char}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\reduced}{red}
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\den}{den}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Br}{Br}
+\DeclareMathOperator{\inv}{inv}
+\DeclareMathOperator{\Nm}{Nm}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\an}{an}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\sep}{sep}
+\DeclareMathOperator{\unr}{unr}
+\DeclareMathOperator{\et}{\acute et}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\gl}{GL}
+\DeclareMathOperator{\SL}{SL}
+
+\newcommand{\grp}{\textsc{Grp}}
+\newcommand{\set}{\textsc{Set}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\naturalto}{\overset{.}{\to}}
+\newcommand{\qbar}{\overline{\mathbb{Q}}}
+\newcommand{\zbar}{\overline{\mathbb{Z}}}
+
+\newcommand{\pro}{\mathbb{P}}
+\newcommand{\aff}{\mathbb{A}}
+\newcommand{\quat}{\mathbb{H}}
+\newcommand{\rea}{\mathbb{R}}
+\newcommand{\kiu}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\zee}{\mathbb{Z}}
+\newcommand{\ow}{\mathcal{O}}
+\newcommand{\mcx}{\mathcal{X}}
+\newcommand{\mcy}{\mathcal{Y}}
+\newcommand{\mcs}{\mathcal{S}}
+\newcommand{\mca}{\mathcal{A}}
+\newcommand{\mcb}{\mathcal{B}}
+\newcommand{\mcf}{\mathcal{F}}
+\newcommand{\mcg}{\mathcal{G}}
+\newcommand{\mct}{\mathcal{T}}
+\newcommand{\mcq}{\mathcal{Q}}
+\newcommand{\mcr}{\mathcal{R}}
+\newcommand{\adl}{\mathbf{A}}
+\newcommand{\mbk}{\mathbf{k}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+
+\newcommand{\kbar}{\overline{K}}
+\newtheorem{lemma}{Lemma}
+
+\author{Sebastiano Tronto}
+\title{On the Second Condition of Theorem 5.2 ($\ell=2$)}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Question:} is Lemma 1 of Lang's \emph{Elliptic Curves Diophantine Analysis}, Chapter 5 Section 5, page 117 (References/Kummer theory/LANG-book-EC.pdf) consistent with Jones-Rouse's Theorem 5.2, i.e. can we deduce that $F(\beta_1)$ is partially contained in $F(A[2])$ already?
+
+I believe the answer is no. Lang is working over a base field that contains all the $\ell^\infty$ torsion of $A$, so it doesn't apply in our case (J\&R assume surjectivity of the torsion part).
+
+A counterexample is actually given by J\&R right after the proof of the theorem (``Remark''). They don't say explicitly that $\kiu(\beta_1)\cap \kiu(A[2])=\kiu$ in this case, but I have tested this with sage (see the file \texttt{2-division-counterex.sage}): $\kiu(\beta_1)$ has degree $24$ over $\kiu$ and $\kiu(A[2])$ has degree $2$, which together imply that $[\kiu(A[2],\beta_1):\kiu(A[2])]\geq 4$, so it is maximal.
+
+The file \texttt{2-division.sage} contains some code that looks for other counterexamples (varying the parameters of a short Weierstrass equation), but it is quite slow (about 3 minutes on my pc for each elliptic curve of which it computes the 4-torsion field).
+
+\end{document}
